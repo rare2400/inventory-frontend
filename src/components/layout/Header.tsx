@@ -19,14 +19,14 @@ const Header = () => {
                             {
                                 !user ? <NavLink to="/login"
                                     className={({ isActive }) => isActive ? "active nav-link" : "nav-link"}>
-                                    Logga in</NavLink> : <button onClick={logout}>Logga ut</button>
+                                    Logga in</NavLink> : <button onClick={logout} className="logout-btn">Logga ut</button>
                             }
                         </li>
                         <li>
                             {
                                 !user ? <NavLink to="/register"
                                     className={({ isActive }) => isActive ? "active nav-link" : "nav-link"}>
-                                    Registrera dig</NavLink> : <NavLink to="/dashboard"
+                                    Registrera dig</NavLink> : <NavLink to="/admin"
                                         className={({ isActive }) => isActive ? "active nav-link" : "nav-link"}>
                                     Dashboard</NavLink>
                             }
