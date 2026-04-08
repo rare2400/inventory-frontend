@@ -7,7 +7,7 @@ export const LayoutPage = () => {
         <>
         <Header />
 
-        <main>
+        <main className="container">
             <Outlet />
         </main>
 
