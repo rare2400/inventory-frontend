@@ -1,0 +1,38 @@
+:root {
+  /* colors */
+  --bg: #f5f5f5;
+  --white: #fff;
+  --primary-color: #1b2132;
+  --secondary-color: #6f320b;
+  --text-primary: #222;
+  --text-secondary: #555;
+  --text-muted: #999;
+  --border-color: #c9c5c5;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+
+  /* buttons */
+  --btn-primary: #1b2132;
+  --btn-primary-hover: #090e1e;
+
+  /* error messages */
+  --error-bg: #ffe0e0;
+  --error: #c0392b;
+  --error-dark: #9a2417;
+
+  /* other */
+  --border-radius: 8px;
+  --box-shadow: 0px 0px 10px 0px var(--shadow-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100%;
+  background-color: var(--bg);
+  color: var(--text-primary);
+}
