@@ -23,7 +23,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             })
 
             if (!res.ok) {
-                throw new Error("Inloggning misslyckades");
+                throw new Error("Fel användarnamn eller lösenord.");
             }
 
             const data = await res.json() as AuthResponse;
