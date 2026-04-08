@@ -3,15 +3,11 @@ import { LayoutPage } from "./components/layout/LayoutPage";
 import LoginPage from "./components/pages/public/LoginPage";
 import Home from "./components/pages/public/Home";
 import ProtectedRoute from "./components/protectedRoute";
-
-
-const Register = () => <h1>Registrera dig</h1>;
-const ProductPage = () => <h1>Produktdetaljer</h1>;
-
-// Admin components
-const Admin = () => <h1>Adminpanel</h1>;
-const ProductList = () => <h1>Admin - Produktlista</h1>;
-const ProductForm = () => <h1>Admin - Produktformulär</h1>;
+import Register from "./components/pages/public/Register";
+import ProductPage from "./components/pages/public/ProductPage";
+import Admin from "./components/pages/admin/Admin";
+import ProductList from "./components/pages/admin/ProductList";
+import ProductForm from "./components/pages/admin/ProductForm";
 
 const Error = () => <h1>Sidan existerar inte...</h1>;
 
