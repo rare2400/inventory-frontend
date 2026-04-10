@@ -4,6 +4,9 @@ import type { User, LoginCredentials, AuthResponse, AuthContextType } from '../t
 // create context
 const AuthContext = createContext<AuthContextType | null>(null);
 
+// API url
+const BASE_URL = "https://labb3-backend.onrender.com/api";
+
 export interface AuthProviderProps {
     children: ReactNode;
 }
@@ -14,7 +17,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Log in user on app load if token exists
     const login = async (credentials: LoginCredentials) => {
         try {
-            const res = await fetch("http://localhost:3000/api/auth/login", {
+            const res = await fetch(`${BASE_URL}/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -22,12 +25,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 body: JSON.stringify(credentials)
             })
 
+            // Check if login was successful
             if (!res.ok) {
                 throw new Error("Fel användarnamn eller lösenord.");
             }
 
+            // Parse response and store token
             const data = await res.json() as AuthResponse;
-
             localStorage.setItem("AuthToken", data.token);
             setUser(data.user);
 
@@ -51,7 +55,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/auth/me", {
+            // Fetch user data
+            const res = await fetch(`${BASE_URL}/auth/me`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -59,21 +64,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 }
             });
 
+            // Set user data if token is valid
             if (res.ok) {
                 const data = await res.json() as AuthResponse;
                 setUser(data.user);
             }
 
         } catch (err) {
+            // Remove token if invalid and reset user state
             localStorage.removeItem("AuthToken");
             setUser(null);
         }
     }
 
+    // Check token with useEffect
     useEffect(() => {
         checkToken();
     }, []);
 
+    // Provide user and auth functions to children components
     return (
         <AuthContext.Provider value={{ user, login, logout }}>
             {children}
@@ -81,6 +90,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     )
 }
 
+// Hook to use auth context in components
 export const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
 
