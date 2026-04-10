@@ -1,0 +1,79 @@
+.detail {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.detail-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+}
+
+.category {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+}
+
+.price {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 1rem 0 0.8rem;
+}
+
+.meta {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--primary-color);
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.in-stock {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.out-of-stock {
+    color: var(--error);
+    font-weight: 600;
+}
+
+.error {
+    color: var(--error);
+    margin-bottom: 1rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+}
