@@ -171,10 +171,6 @@ const ProductForm = () => {
                 </div>
 
                 <div className="product-form-actions">
-                    {/* Submit button with loading state */}
-                    <button type="submit" className="submit-btn" disabled={loading}>
-                        {loading ? "Sparar..." : isEdit ? "Spara ändringar" : "Skapa produkt"}
-                    </button>
                     {/* Cancel button navigating back to admin page */}
                     <button
                         type="button"
@@ -182,6 +178,11 @@ const ProductForm = () => {
                         onClick={() => navigate("/admin")}
                     >
                         Avbryt
+                    </button>
+
+                    {/* Submit button with loading state */}
+                    <button type="submit" className="submit-btn" disabled={loading}>
+                        {loading ? "Sparar..." : isEdit ? "Spara ändringar" : "Lägg till produkt"}
                     </button>
                 </div>
             </form>
