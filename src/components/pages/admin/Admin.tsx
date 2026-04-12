@@ -77,7 +77,7 @@ const AdminProductList = () => {
                                     {/* Action buttons for editing and deleting products */}
                                     <div className="table-actions">
                                         <Link to={`/admin/products/${p._id}/edit`} className="action-link">
-                                            Redigera
+                                            Ändra
                                         </Link>
                                         {/* Open confirmation dialog on delete */}
                                         <button onClick={() => setConfirmId(p._id)} className="action-delete">
