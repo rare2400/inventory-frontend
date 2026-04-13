@@ -2,14 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import { LayoutPage } from "./components/layout/LayoutPage";
 import LoginPage from "./components/pages/public/LoginPage";
 import Home from "./components/pages/public/Home";
-import ProtectedRoute from "./components/protectedRoute";
 import Register from "./components/pages/public/Register";
 import ProductPage from "./components/pages/public/ProductPage";
 import Admin from "./components/pages/admin/Admin";
-import ProductList from "./components/pages/admin/ProductList";
 import ProductForm from "./components/pages/admin/ProductForm";
+import AdminLayout from "./components/layout/AdminLayout";
 
-const Error = () => <h1>Sidan existerar inte...</h1>;
+const NotFound = () => <h1>Sidan existerar inte...</h1>;
 
 // Define the routes
 export const router = createBrowserRouter([
@@ -18,7 +17,7 @@ export const router = createBrowserRouter([
         element: <LayoutPage />,
         children: [
             {
-                path: "/",
+               index: true,
                 element: <Home />
             },
             {
@@ -33,20 +32,15 @@ export const router = createBrowserRouter([
                 path: "/products/:id",
                 element: <ProductPage />
             },
+            // Protected admin routes
             {
                 path: "admin",
+                element: <AdminLayout />,
                 children: [
                     {
                         index: true,
                         element:
-                            <ProtectedRoute>
                                 <Admin />
-                            </ProtectedRoute>
-                    },
-                    {
-                        path: "products",
-                        element: <ProductList />
-
                     },
                     {
                         path: "products/new",
@@ -64,6 +58,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <Error />
+        element: <NotFound />
     }
 ]);
