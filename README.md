@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Lagersystem Frontend-applikation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En Single page applikation (SPA) byggd med React och TypeScript som kommunicerar med ett REST API för att hantera CRUD-operationer. Applikationen hanterar visning av produkter, sökning, filtrering och en skyddad admindel för produkthantering.  
+Användare kan registreras och logga in för att komma åt admin-delen.
 
-Currently, two official plugins are available:
+## Länkar
+Publicerad applikation: [https://inventory-frontend-caxa.onrender.com ](https://inventory-frontend-caxa.onrender.com)      
+API: [https://labb3-backend.onrender.com/api/products](https://labb3-backend.onrender.com/api/products)    
+API repository: [https://github.com/rare2400/labb3-backend.git](https://github.com/rare2400/labb3-backend.git)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Teknikstack
+- React
+- React Router
+- TypeScript
+- Vite
+- CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Klona repot:**
+```bash
+git clone https://github.com/rare2400/inventory-frontend.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Installera beroenden:**
+```bash
+   npm install
 ```
+
+3. **Starta utvecklingsservern:**
+```bash
+   npm run dev
+```
+
+## Funktionalitet
+- Visning av produkter med sökning och filtrering per kategori
+- Dynamiska routes för enskilda produkter
+- Registrera ny användare
+- Logga in och komma till ett administeringsgränssnitt
+- JWT-autentisering med lagring i localStorage
+- Skyddade adminroutes med automatisk redirect vid utloggning
+- Dynamiskt formulär för att lägga till eller uppdatera en produkt
+- Ta bort en produkt
+- Laddnings- och felmeddelanden vid API-anrop
+- Responsiv design för både desktop och mobil
+
+## Projektstruktur
+```
+src/
+├── api/              # Fetch-funktioner för API-anrop
+├── components/
+│   ├── layout/       # LayoutPage, AdminLayout, Header, Footer
+│   ├── pages/
+│   │   ├── public/   # Home, ProductPage, LoginPage, Register
+│   │   └── admin/    # Admin, ProductForm
+│   └── ui/           # ProductCard
+├── context/          # AuthContext — global autentiseringsstate
+├── types/            # TypeScript-interfaces
+└── router.tsx        # Applikationens routes
+```
+
+## Sidor
+| Sida             | URL                       | Skyddad | Beskrivning                             |
+|------------------|---------------------------|---------|-----------------------------------------|
+| Hem              | `/`                       | Nej     | Produktlista med sökning och filtrering |
+| Produkt          | `/products/:id`           | Nej     | Detaljvy för enskild produkt            |
+| Logga in         | `/login`                  | Nej     | Inloggningsformulär                     |
+| Registrera       | `/register`               | Nej     | Registreringsformulär                   |
+| Admin            | `/admin`                  | Ja      | Produkthantering                        |
+| Ny produkt       | `/admin/products/new`     | Ja      | Formulär för ny produkt                 |
+| Redigera produkt | `/admin/products/:id/edit`| Ja      | Formulär för redigering                 |
+
+
+## Formulärvalidering
+**Felmeddleanden vid:**
+- Tomma obligatoriska fält
+- Ogiltiga värden (t.ex. negativt pris eller lagersaldo)
+- Lösenord som inte matchar vid registrering
+- Felaktiga inloggningsuppgifter
+
+## Skapad av
+Skapad som en del av en skoluppgift   
+Mittuniversitetet, Webbutvecklingsprogrammet    
+Ramona Reinholdz      
+[rare2400@student.miun.se](rare2400@student.miun.se)      
+2026-03-26
