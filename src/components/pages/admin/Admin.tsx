@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReq, deleteReq } from "../../../api/api";
-import { Product } from "../../../types/product.types";
+import type { Product } from "../../../types/product.types";
 import "./Admin.css";
 import { useAuth } from "../../../context/AuthContext";
 

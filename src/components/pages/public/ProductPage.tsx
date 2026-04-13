@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getReq } from "../../../api/api";
-import { Product } from "../../../types/product.types";
+import type { Product } from "../../../types/product.types";
 import "./ProductPage.css";
 
 /**

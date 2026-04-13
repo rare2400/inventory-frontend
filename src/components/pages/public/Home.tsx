@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReq } from "../../../api/api";
-import { Product } from "../../../types/product.types";
+import type { Product } from "../../../types/product.types";
 import ProductCard from "../../ui/ProductCard"
 import "./Home.css";
 

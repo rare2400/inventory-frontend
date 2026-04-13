@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../types/product.types";
+import type { Product } from "../../types/product.types";
 import "./ProductCard.css";
 
 // Component to show product as a card
